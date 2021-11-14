@@ -17,7 +17,7 @@ module.exports = (app) => {
         conn.query(query, (err, result) => {
             if (err) {
                 console.log(err);
-                res.json({ status: 0, message: 'Its not possible to login', values: [] });
+                res.json({ status: 0, message: 'Its not possible to login', values: [], error: err });
             } else {
                 if (result.rowCount > 0) {
                     res.json({ status: 1, message: 'Login successful', values: result.rows });
