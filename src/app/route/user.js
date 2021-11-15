@@ -1,7 +1,7 @@
 const conn = require('../../config/database');
 
 module.exports = (app) => {
-    app.get('/user', (req, res, next) => {
+    app.get('/api/user', (req, res, next) => {
         let query = "SELECT id, user_login, user_name, password, projects, coins, icon, position, employeeid FROM timetracker.user";
         conn.query(query, (err, result) => {
             if (err) {
@@ -12,7 +12,7 @@ module.exports = (app) => {
         });
     });
 
-    app.post('/login', (req, res, next) => {
+    app.post('/api/login', (req, res, next) => {
         let query = `SELECT id, user_login, user_name, password, projects, coins, icon, position, employeeid FROM timetracker.user WHERE user_login = '${req.body.user}' AND password = '${req.body.password}'`;
         conn.query(query, (err, result) => {
             if (err) {
